@@ -1,0 +1,25 @@
+.main-progress-bar{
+  margin-bottom: 15px;
+
+  .box-subtitle{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    span{
+      color: $color-white;
+    }
+  }
+
+  .progress-bar{
+    border-radius: 5px;
+    min-width: 140px;
+    height: 10px;
+    background-color: $color-white-darkness;
+
+    .fill{
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+}

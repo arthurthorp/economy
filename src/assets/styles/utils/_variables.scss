@@ -1,0 +1,29 @@
+$color-white: #FFF;
+$color-white-light: #F6F5F3;
+$color-white-dark: #e6e3e3;
+$color-white-darkness:  #d1cfcf;
+
+$horizontal-space: 25px;
+$bg-white-black: #585461;
+$bg-black: #312e38;
+$bg-black-dark: #26242b;
+$bg-line-black: #222;
+
+$color-pink:#a31c44;
+$color-pink-darkness:#85072c;
+
+$bg-green: #28B463;
+$bg-orange:#F39C12;
+$bg-tomato: #D35400;
+
+$layout-breakpoints: (
+    extraSmall: 0px,
+    small: 350px,
+    bigSmall: 475px,
+    extraMedium: 600px,
+    medium: 725px,
+    bigMedium: 850px,
+    extraLarge: 1300px,
+    large: 1750px,
+    bigLarge: 5000px,
+);

@@ -1,0 +1,178 @@
+main{
+  h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  p {
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    font-size: 17px;
+    line-height: 2.3;
+    color:$color-white-darkness;
+    margin-bottom: 20px;
+  }
+}
+
+#section-introduction {
+  @include media_querie(extraSmall, bigSmall) {
+    display: flex;
+    flex-direction: column;
+
+    button {
+      margin: 0 auto;
+    }
+  }
+
+  .box-text-content {
+
+    img {
+      width: 400px;
+      max-width: 100%;
+      float: left;
+      margin-right: 80px;
+    }
+
+  }
+}
+
+#section-scenery-operates {
+  margin-top: 20px;
+
+  .box-content{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    .list-progress{
+      width: 40%;
+      margin-right: 20px;
+    }
+
+    .text-progress {
+      width: 50%;
+    }
+
+    @include media_querie(extraSmall, bigSmall) {
+      display: block;
+
+      .list-progress, .text-progress{
+        width: 100%;
+      }
+      .text-progress {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        button {
+          margin: 0 auto;
+        }
+      }
+
+    }
+  }
+}
+
+#section-news {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .box-news{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    column-gap: 30px;
+    row-gap: 30px;
+
+    @include media_querie(extraSmall, bigSmall) {
+      grid-template-columns: 1fr;
+      column-gap: 0;
+    }
+  }
+
+  button {
+    margin: 20px auto;
+  }
+}
+
+#parallax-section{
+  position: relative;
+  width: 100%;
+  height: 220px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url("../../img/bg-parallax.jpg");
+
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .bg-overlay{
+    background-color: rgba(0,0,0, .6);
+    position: absolute;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+  }
+  blockquote{
+    width: 60%;
+    font-size: 20px;
+    min-width: 300px;
+    z-index: 5;
+
+    @include media_querie(extraSmall, bigSmall) {
+      width: 100%;
+      padding: 0 25px;
+      font-size: 16px;
+      text-align: center;
+    }
+
+  }
+}
+
+#goal-section {
+  margin: 20px 0;
+  .box-goals{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: space-between;
+
+
+
+    img{
+      width: 35%;
+      object-fit: cover;
+      margin-left: 30px;
+    }
+
+    .list-section{
+      width: 75%;
+    }
+
+    @include media_querie(extraSmall, bigSmall) {
+      flex-direction: column;
+
+      img {
+        width: 100%;
+        margin: 10px 0 20px 0;
+      }
+    }
+
+    .list-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      button {
+        margin: 0 auto;
+      }
+    }
+  }
+}

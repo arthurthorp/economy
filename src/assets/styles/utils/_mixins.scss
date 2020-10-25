@@ -1,0 +1,11 @@
+@mixin media_querie($minimum, $maximum) {
+  @if map_has_key($layout-breakpoints, $minimum) and map_has_key($layout-breakpoints, $maximum) {
+      $minimum-width: map_get($layout-breakpoints, $minimum);
+      $maximum-width: map_get($layout-breakpoints, $maximum);
+      $maximum-width: $maximum-width - 1px;
+
+      @media only screen and (min-width: $minimum-width) and (max-width: $maximum-width) {
+          @content
+      }
+  }
+}

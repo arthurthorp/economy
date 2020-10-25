@@ -1,0 +1,14 @@
+.goal-item{
+  width: 100%;
+  border-left: 3px solid $color-white-darkness;
+  padding: 0 20px;
+  margin: 0 0 10px 0;
+
+  p{
+    font-size: 16px;
+
+    i{
+      font-style: italic;
+    }
+  }
+}
