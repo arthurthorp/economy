@@ -41,10 +41,10 @@ const Aside: React.FC<HeaderProps> = ({ page }) => {
               <Link to="/">Home</Link>
             </li>
             <li className={page === 'introducao' ? 'active' : ''}>
-              <Link to="/">Introdução</Link>
+              <Link to="/introducao">Introdução</Link>
             </li>
             <li className={page === 'cenario' ? 'active' : ''}>
-              <Link to="/">Cenário atual</Link>
+              <Link to="/cenario-atual">Cenário atual</Link>
             </li>
             <li className={page === 'noticias' ? 'active' : ''}>
               <Link to="/">Notícias</Link>

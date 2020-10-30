@@ -1,0 +1,29 @@
+#breadcrumb {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #3c3a40;
+
+  ul{
+    li{
+      display: inline;
+
+
+      &+li:before{
+        padding: 8px;
+        color: $color-white-darkness;
+        content: '/\00a0';
+      }
+
+      a{
+        border-bottom: 2px solid transparent;
+        transition: all .35s ease-in-out;
+        &:hover{
+          color: $color-pink !important;
+          border-color: $color-pink !important;
+        }
+      }
+
+
+    }
+  }
+}

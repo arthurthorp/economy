@@ -1,0 +1,17 @@
+#scenario {
+  img {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin: 30px 0;
+    text-align: center;
+  }
+
+  .box-chart{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+}
