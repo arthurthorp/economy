@@ -74,6 +74,7 @@ aside.menu{
   border-right: 2px solid $bg-line-black;
   background-color: $bg-black-dark;
   display: flex;
+  z-index: 99;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;

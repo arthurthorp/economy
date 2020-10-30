@@ -2,7 +2,6 @@
 import React, { useRef, useEffect } from 'react';
 import Chart from 'chart.js';
 
-import { createDocumentRegistry } from 'typescript';
 import Aside from '../components/Aside';
 import Breadcrumb from '../components/Breadcrumb';
 import Footer from '../components/Footer';
@@ -18,39 +17,97 @@ interface Country {
   borderColor: string;
 }
 
+interface CountryBar {
+  country: string;
+  value: number[];
+  background: string;
+  borderColor: string;
+}
+
+interface CountryLine {
+  country: string;
+  colorLine: string;
+  values: number[];
+}
+
+interface CountriesBarInterface {
+  countries: CountryBar[];
+}
+
 interface CountriesInterface {
   countries: Country[];
 }
 
+interface LineCountriesInterface {
+  countries: CountryLine[];
+}
+
+interface Response {
+  bar_chart: CountriesBarInterface;
+  pizza_chart: CountriesInterface;
+  line_chart: LineCountriesInterface;
+}
+
 const Scenario: React.FC = () => {
-  const canvasRef   = useRef<HTMLCanvasElement | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const canvasPizza = useRef<HTMLCanvasElement | null>(null);
-  const canvasLine  = useRef<HTMLCanvasElement | null>(null);
+  const canvasLine = useRef<HTMLCanvasElement | null>(null);
 
   const canvasCtxRef = React.useRef<CanvasRenderingContext2D | null>(null);
   const PizzaCtxRef = React.useRef<CanvasRenderingContext2D | null>(null);
   const LineCtxRef = React.useRef<CanvasRenderingContext2D | null>(null);
 
   useEffect(() => {
-    async function getJSON(): Promise<object> {
-      const response = await api.get('api.json');
-      return response;
-    }
-    if (canvasRef.current) {
-      canvasCtxRef.current = canvasRef.current.getContext('2d');
-      const ctx = canvasCtxRef.current;
-      api.get('api.json').then(response => {
-        const { countries }: CountriesInterface = response.data.bar_chart;
+    async function LoadCharts(): Promise<void> {
+      const { data } = await api.get<Response>('api.json');
+      if (canvasRef.current) {
+        canvasCtxRef.current = canvasRef.current.getContext('2d');
+        const ctx = canvasCtxRef.current;
+        const { countries }: CountriesBarInterface = data.bar_chart;
 
         const barChart = new Chart(ctx!, {
           type: 'bar',
+          data: {
+            labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
+            datasets: countries.map((value, i) => {
+              return {
+                label: value.country,
+                backgroundColor: value.background,
+                borderColor: value.borderColor,
+                borderWidth: 1,
+                data: value.value,
+              };
+            }),
+          },
+          options: {
+            scales: {
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true,
+                  },
+                },
+              ],
+            },
+            maintainAspectRatio: false,
+          },
+        });
+      }
+
+      if (canvasPizza.current) {
+        PizzaCtxRef.current = canvasPizza.current.getContext('2d');
+        const ctxPizza = PizzaCtxRef.current;
+        const { countries }: CountriesInterface = data.pizza_chart;
+
+        const PizzaChart = new Chart(ctxPizza!, {
+          type: 'pie',
           data: {
             labels: countries.map((value, i) => {
               return value.country;
             }),
             datasets: [
               {
-                label: 'Desenvolvimento econômico',
+                label: 'Distribuição de empregos dignos',
                 data: countries.map((value, i) => {
                   return value.value;
                 }),
@@ -65,25 +122,50 @@ const Scenario: React.FC = () => {
             ],
           },
           options: {
-            scales: {
-              yAxes: [
-                {
-                  ticks: {
-                    beginAtZero: true,
-                  },
-                },
-              ],
+            animation: {
+              animateScale: true,
             },
+            maintainAspectRatio: false,
           },
         });
+      }
 
-        const pizzaChart = 1;
-      });
+      if (canvasLine.current) {
+        const { countries }: LineCountriesInterface = data.line_chart;
+        LineCtxRef.current = canvasLine.current.getContext('2d');
+        const ctxLine = LineCtxRef.current;
+        const LineChart = new Chart(ctxLine!, {
+          type: 'line',
+          data: {
+            labels: [
+              'Janeiro',
+              'Fevereiro',
+              'Março',
+              'Abril',
+              'Maio',
+              'Junho',
+              'Julho',
+            ],
+            datasets: countries.map((value, i) => {
+              return {
+                label: value.country,
+                fill: false,
+                borderColor: value.colorLine,
+                data: value.values,
+              };
+            }),
+          },
+          options: {
+            animation: {
+              animateScale: true,
+            },
+            maintainAspectRatio: false,
+          },
+        });
+      }
     }
 
-    if(PizzaCtxRef){
-
-    }
+    LoadCharts();
   }, []);
 
   return (
@@ -111,12 +193,30 @@ const Scenario: React.FC = () => {
             tristique tristique non id lectus. Proin sit amet lorem et dolor
             venenatis sagittis non eget metus. Integer eget ipsum urna.
           </p>
-
-          <canvas ref={canvasRef}/>
-
-          <div className="box-chart">
-            <canvas ref={canvasPizza} />
-            <canvas ref={canvasLine} />
+        </section>
+        <section className="container" id="chart-section">
+          <div className="canvas-container">
+            <p>teste</p>
+            <div className="box-chart">
+              <canvas ref={canvasRef} />
+            </div>
+          </div>
+          <div className="block-charts">
+            <div className="canvas-container">
+              <p>Distribuição de trabalhos dignos e bem remunerados</p>
+              <div className="box-chart">
+                <canvas
+                  ref={canvasPizza}
+                  aria-label="Gráfico circular representando a distribuição de empregos descentes"
+                />
+              </div>
+            </div>
+            <div className="canvas-container">
+              <p>Taxa de desemprego(%)</p>
+              <div className="box-chart">
+                <canvas ref={canvasLine} />
+              </div>
+            </div>
           </div>
         </section>
       </main>

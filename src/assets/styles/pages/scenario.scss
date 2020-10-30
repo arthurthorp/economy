@@ -9,9 +9,32 @@
     text-align: center;
   }
 
-  .box-chart{
+}
+
+#chart-section {
+  .canvas-container {
+    p{
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    .box-chart {
+      position: relative;
+      width: 100%;
+
+    }
+  }
+
+  .block-charts{
+    margin: 50px 0;
     display: flex;
+    max-width: 100%;
     justify-content: space-between;
     align-items: flex-start;
+
+    @include media_querie(extraSmall, bigSmall) {
+      display: block;
+    }
   }
 }
