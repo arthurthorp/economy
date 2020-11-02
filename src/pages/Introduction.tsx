@@ -12,7 +12,10 @@ const Introduction: React.FC = () => {
       <Aside page="introducao" />
       <main id="introduction">
         <section className="container">
-          <img src={IntroducaoImg} alt="Homem soldando um casco de navio" />
+          <img
+            src={IntroducaoImg}
+            alt="Trilho de processamento de uma fábrica de sucos"
+          />
         </section>
         <Breadcrumb page="Introdução" />
         <section className="container">

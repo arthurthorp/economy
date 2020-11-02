@@ -29,12 +29,21 @@
   .block-charts{
     margin: 50px 0;
     display: flex;
-    max-width: 100%;
+    width: 100%;
     justify-content: space-between;
     align-items: flex-start;
 
-    @include media_querie(extraSmall, bigSmall) {
+    .canvas-container {
+      width: 100%;
+
+    }
+
+    @include media_querie(extraSmall, medium) {
       display: block;
+      .canvas-container {
+        margin-top: 20px;
+      }
+
     }
   }
 }

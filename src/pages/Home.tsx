@@ -116,7 +116,7 @@ const Home: React.FC = () => {
             </New>
           </div>
           <Button>
-            <Link to="/cenario-atual">Ver mais</Link>
+            <Link to="/noticias">Ver mais</Link>
           </Button>
         </section>
 
@@ -148,7 +148,7 @@ const Home: React.FC = () => {
                 Maecenas a metus ligula. Morbi eu lacinia lectus."
               />
               <Button>
-                <Link to="/cenario-atual">Ver mais</Link>
+                <Link to="/metas">Ver mais</Link>
               </Button>
             </div>
           </div>

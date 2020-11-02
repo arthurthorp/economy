@@ -69,7 +69,7 @@ const Scenario: React.FC = () => {
           type: 'bar',
           data: {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio'],
-            datasets: countries.map((value, i) => {
+            datasets: countries.map(value => {
               return {
                 label: value.country,
                 backgroundColor: value.background,
@@ -89,7 +89,6 @@ const Scenario: React.FC = () => {
                 },
               ],
             },
-            maintainAspectRatio: false,
           },
         });
       }
@@ -102,19 +101,19 @@ const Scenario: React.FC = () => {
         const PizzaChart = new Chart(ctxPizza!, {
           type: 'pie',
           data: {
-            labels: countries.map((value, i) => {
+            labels: countries.map(value => {
               return value.country;
             }),
             datasets: [
               {
                 label: 'Distribuição de empregos dignos',
-                data: countries.map((value, i) => {
+                data: countries.map(value => {
                   return value.value;
                 }),
-                backgroundColor: countries.map((value, i) => {
+                backgroundColor: countries.map(value => {
                   return value.background;
                 }),
-                borderColor: countries.map((value, i) => {
+                borderColor: countries.map(value => {
                   return value.borderColor;
                 }),
                 borderWidth: 1,
@@ -125,7 +124,6 @@ const Scenario: React.FC = () => {
             animation: {
               animateScale: true,
             },
-            maintainAspectRatio: false,
           },
         });
       }
@@ -146,7 +144,7 @@ const Scenario: React.FC = () => {
               'Junho',
               'Julho',
             ],
-            datasets: countries.map((value, i) => {
+            datasets: countries.map(value => {
               return {
                 label: value.country,
                 fill: false,
@@ -167,7 +165,6 @@ const Scenario: React.FC = () => {
 
     LoadCharts();
   }, []);
-
   return (
     <>
       <Aside page="cenario" />
@@ -196,14 +193,17 @@ const Scenario: React.FC = () => {
         </section>
         <section className="container" id="chart-section">
           <div className="canvas-container">
-            <p>teste</p>
+            <p>Crescimento econômico(%)</p>
             <div className="box-chart">
-              <canvas ref={canvasRef} />
+              <canvas
+                ref={canvasRef}
+                aria-label="Gráfico em barras representando a distribuição de empregos descentes"
+              />
             </div>
           </div>
           <div className="block-charts">
             <div className="canvas-container">
-              <p>Distribuição de trabalhos dignos e bem remunerados</p>
+              <p>Distribuição de trabalhos dignos e bem remunerados(%)</p>
               <div className="box-chart">
                 <canvas
                   ref={canvasPizza}
@@ -214,7 +214,10 @@ const Scenario: React.FC = () => {
             <div className="canvas-container">
               <p>Taxa de desemprego(%)</p>
               <div className="box-chart">
-                <canvas ref={canvasLine} />
+                <canvas
+                  ref={canvasLine}
+                  aria-label="Gráfico em linhas representando a taxa de desemprego"
+                />
               </div>
             </div>
           </div>

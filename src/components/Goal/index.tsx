@@ -5,12 +5,13 @@ interface GoalProps {
   item: string;
 }
 
-const Goal: React.FC<GoalProps> = ({ item }) => {
+const Goal: React.FC<GoalProps> = ({ item, children }) => {
   return (
     <div className="goal-item">
       <p>
         <i>{item}</i>
       </p>
+      {children}
     </div>
   );
 };

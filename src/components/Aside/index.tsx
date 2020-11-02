@@ -29,6 +29,7 @@ const Aside: React.FC<HeaderProps> = ({ page }) => {
             <span className="hamburguer" />
           </div>
         </label>
+        <h1>Economy</h1>
       </div>
       <aside className={isChecked ? 'menu open' : 'menu'}>
         <img
@@ -47,10 +48,10 @@ const Aside: React.FC<HeaderProps> = ({ page }) => {
               <Link to="/cenario-atual">Cenário atual</Link>
             </li>
             <li className={page === 'noticias' ? 'active' : ''}>
-              <Link to="/">Notícias</Link>
+              <Link to="/noticias">Notícias</Link>
             </li>
             <li className={page === 'metas' ? 'active' : ''}>
-              <Link to="/">Metas</Link>
+              <Link to="/metas">Metas</Link>
             </li>
           </ul>
         </nav>

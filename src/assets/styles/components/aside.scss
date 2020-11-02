@@ -11,7 +11,12 @@
 
   @include media_querie(extraSmall, bigMedium) {
     position: fixed;
-    display: block;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      width: 100%;
+    }
   }
   .menu {
     width: 60px;
