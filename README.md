@@ -1,4 +1,4 @@
-## Intructions
+## Instructions
 After downloading the project on your computer, run "yarn" to install all dependencies.
 
 ## Available Scripts
